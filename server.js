@@ -4,11 +4,11 @@ const app = express();
 const port = 8080;
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// Fallback for any other request to index.html (useful for SPA behavior if needed)
+// Fallback for any other request to index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
